@@ -1,3 +1,0 @@
-db.driver=org.postgresql.Driver
-db.url=jdbc:postgresql://ep-divine-meadow-a2d5txw1.eu-central-1.aws.neon.tech/prod-ds-systems?user=az.ah.qwerty&password=Tu0chl3zfsZr
-
