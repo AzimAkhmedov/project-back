@@ -4,8 +4,7 @@ import jakarta.persistence.*;
 @Entity
 @Table(name = "users")
 
-public class User<SomeType> {
-   private SomeType temp;
+public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
@@ -53,10 +52,6 @@ public class User<SomeType> {
         this.role = role;
     }
 
-//    ""
-//    public void a<T>(a ){
-//      a variable = new a();
-//    }
 }
 
 

@@ -1,0 +1,8 @@
+/Users/ahmedovazimzon/Documents/GitHub/project-back/src/main/java/net/javaguides/springboot/db/DatabaseConfig.java
+/Users/ahmedovazimzon/Documents/GitHub/project-back/src/main/java/net/javaguides/springboot/exception/ResourceNotFoundException.java
+/Users/ahmedovazimzon/Documents/GitHub/project-back/src/main/java/net/javaguides/springboot/repository/UserRepository.java
+/Users/ahmedovazimzon/Documents/GitHub/project-back/src/main/java/net/javaguides/springboot/model/User.java
+/Users/ahmedovazimzon/Documents/GitHub/project-back/src/main/java/net/javaguides/springboot/controller/UserController.java
+/Users/ahmedovazimzon/Documents/GitHub/project-back/src/main/java/net/javaguides/springboot/securingweb/WebSecurityConfig.java
+/Users/ahmedovazimzon/Documents/GitHub/project-back/src/main/java/net/javaguides/springboot/db/DB.java
+/Users/ahmedovazimzon/Documents/GitHub/project-back/src/main/java/net/javaguides/springboot/SpringbootBackendApplication.java
