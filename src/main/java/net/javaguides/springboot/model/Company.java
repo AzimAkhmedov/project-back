@@ -15,6 +15,10 @@ public class Company {
     public Company() {
     }
 
+    public Company(String companyName, long countryID){
+        super();
+    }
+
     public Company(long companyID, String companyName, long countryID) {
         this.companyID = companyID;
         this.companyName = companyName;

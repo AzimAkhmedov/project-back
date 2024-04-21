@@ -22,6 +22,10 @@ public class User {
 
     }
 
+    public User(String fullName, String password, String role, String passportNumber, String citizenship) {
+        super();
+    }
+
     public User(long id, String fullName, String password, String role, String passportNumber, String citizenship) {
         this.id = id;
         this.fullName = fullName;

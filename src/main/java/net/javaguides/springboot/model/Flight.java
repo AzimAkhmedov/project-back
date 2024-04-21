@@ -27,6 +27,10 @@ public class Flight {
     public Flight() {
     }
 
+    public Flight(long companyID, long originID, long destinationID, int duration, int availableEconomSeats, int economPrice, int availableBusinessSeats, int businessPrice){
+        super();
+    }
+
     public Flight(long flightID, long companyID, long originID, long destinationID, int duration, int availableEconomSeats, int economPrice, int availableBusinessSeats, int businessPrice) {
         this.flightID = flightID;
         this.companyID = companyID;

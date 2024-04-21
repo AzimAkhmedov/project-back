@@ -19,6 +19,10 @@ public class Booking {
     public Booking() {
     }
 
+    public Booking(long flightID, long userID, long paymentID, String flightClass){
+        super();
+    }
+
     public Booking(long bookingID, long flightID, long userID, long paymentID, String flightClass) {
         this.bookingID = bookingID;
         this.flightID = flightID;

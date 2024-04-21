@@ -13,6 +13,10 @@ public class Employee {
     public Employee() {
     }
 
+    public Employee(long companyID){
+        super();
+    }
+
     public Employee(long userID, long companyID) {
         this.userID = userID;
         this.companyID = companyID;

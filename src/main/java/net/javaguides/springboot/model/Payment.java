@@ -21,6 +21,10 @@ public class Payment {
     public Payment() {
     }
 
+    public Payment(long recipientID, long senderID, String date, String paymentStatus, int amount){
+        super();
+    }
+
     public Payment(long paymentID, long recipientID, long senderID, String date, String paymentStatus, int amount) {
         this.paymentID = paymentID;
         this.recipientID = recipientID;

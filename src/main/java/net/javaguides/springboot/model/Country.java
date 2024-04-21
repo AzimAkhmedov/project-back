@@ -13,6 +13,10 @@ public class Country {
     public Country() {
     }
 
+    public Country(String countryName){
+        super();
+    }
+
     public Country(long countryID, String countryName) {
         this.countryID = countryID;
         this.countryName = countryName;
