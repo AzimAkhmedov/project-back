@@ -37,7 +37,7 @@ public class UserController {
     }
     @PostMapping("/registration")
     public  User createUser(@RequestBody User user){
-        return  userRepository.save(user);
+        return userRepository.save(user);
     }
     @DeleteMapping("/user/{id}")
     public  void  deleteUser(@PathVariable Long id){
