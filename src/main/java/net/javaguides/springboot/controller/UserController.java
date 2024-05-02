@@ -3,6 +3,7 @@ package net.javaguides.springboot.controller;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 import net.javaguides.springboot.model.User;
 import net.javaguides.springboot.repository.UserRepository;
@@ -51,7 +52,20 @@ public class UserController {
       oldUser.setFullName(user.getFullName());
       oldUser.setRole(user.getRole());
         userRepository.save(oldUser);
-    };
+    }
+
+    public boolean login(String fullName, String password){
+        boolean found = false;
+        for(User i : userRepository.findAll()){
+            found = Objects.equals(i.getFullName(), fullName) && Objects.equals(i.getPassword(), password);
+        }
+        return found;
+    }
+
+    public void registration(String fullName, String password, String role, String passportNumber, String citizenship){
+        User newUser = new User(fullName, password, role, passportNumber,citizenship);
+        userRepository.save(newUser);
+    }
 
 //    // create employee rest api
 //    @PostMapping("/employees")
