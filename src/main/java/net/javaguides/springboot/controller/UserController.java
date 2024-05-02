@@ -1,9 +1,6 @@
 package net.javaguides.springboot.controller;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 
 import net.javaguides.springboot.model.User;
 import net.javaguides.springboot.repository.UserRepository;
@@ -27,6 +24,32 @@ import net.javaguides.springboot.exception.ResourceNotFoundException;
 @RestController
 @RequestMapping("/api/v1/")
 public class UserController {
+
+static class RegistrationBody{
+    private String fullName;
+    private String password;
+
+    public RegistrationBody(String userName, String password) {
+        this.fullName = userName;
+        this.password = password;
+    }
+    public String getFullName() {
+        return fullName;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+
+}
 
     @Autowired
     private UserRepository userRepository;
@@ -53,15 +76,19 @@ public class UserController {
       oldUser.setRole(user.getRole());
         userRepository.save(oldUser);
     }
+    @PostMapping("/login")
 
-    public boolean login(String fullName, String password){
-        boolean found = false;
+    public Optional<User> login(@RequestBody RegistrationBody body){
+        Optional<User> found = Optional.empty();
         for(User i : userRepository.findAll()){
-            found = Objects.equals(i.getFullName(), fullName) && Objects.equals(i.getPassword(), password);
+            if(Objects.equals(i.getFullName(), body.getFullName()) && Objects.equals(i.getPassword(), body.getPassword())){
+                found = Optional.of(i);
+            }
         }
         return found;
     }
 
+//    @PostMapping("/registration")
     public void registration(String fullName, String password, String role, String passportNumber, String citizenship){
         User newUser = new User(fullName, password, role, passportNumber,citizenship);
         userRepository.save(newUser);
