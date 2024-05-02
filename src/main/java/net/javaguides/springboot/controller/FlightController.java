@@ -1,5 +1,7 @@
 package net.javaguides.springboot.controller;
 
+import java.sql.*;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -30,22 +32,22 @@ public class FlightController {
     private FlightRepository flightRepository;
 
     @GetMapping("/flights")
-    public List<Flight> getAllFlights(){
+    public List<Flight> getAllFlights() {
         return flightRepository.findAll();
     }
 
     @PostMapping("/new_flight")
-    public Flight createFlight(@RequestBody Flight flight){
+    public Flight createFlight(@RequestBody Flight flight) {
         return flightRepository.save(flight);
     }
 
     @DeleteMapping("/flight/{id}")
-    public void deleteFlight(@PathVariable Long id){
+    public void deleteFlight(@PathVariable Long id) {
         flightRepository.deleteById(id);
     }
 
     @PutMapping("/flight/{id}")
-    public void updateFlight(@PathVariable Long id, @RequestBody Flight flight){
+    public void updateFlight(@PathVariable Long id, @RequestBody Flight flight) {
         Flight oldFlight = flightRepository.findById(id).get();
 
         oldFlight.setCompanyID(flight.getCompanyID());
@@ -59,4 +61,61 @@ public class FlightController {
 
         flightRepository.save(oldFlight);
     }
+
+    @GetMapping("/flights/search_by_id")
+    public void searchFlightById(@PathVariable Long id) {
+
+//        Flight foundFlight = flightRepository.findById(id).get();
+//
+//        System.out.println(foundFlight.getCompanyID() + "\n" + foundFlight.getOriginID() + "\n"
+//        + foundFlight.getDestinationID() + "\n" + foundFlight.getDuration() + "\n" + foundFlight.getAvailableEconomSeats()
+//        + "\n" + foundFlight.getEconomPrice() + "\n" + foundFlight.getAvailableBusinessSeats() + "\n" + foundFlight.getBusinessPrice());
+
+
+
+        try {
+            
+            Connection connection = DriverManager.getConnection("http://localhost:8080/api/v1");
+
+            Statement statement = connection.createStatement();
+
+            String sql = "SELECT * FROM flights WHERE flightID = " + id;
+            ResultSet resultSet = statement.executeQuery(sql);
+
+
+            while (resultSet.next()) {
+
+                Long flightId = resultSet.getLong("flightID");
+                Long companyID = resultSet.getLong("companyID");
+                Long originID = resultSet.getLong("originID");
+                Long destinationID = resultSet.getLong("destinationID");
+                int duration = resultSet.getInt("duration");
+                int availableEconomSeats = resultSet.getInt("availableEconomSeats");
+                int economPrice = resultSet.getInt("economPrice");
+                int availableBusinessSeats = resultSet.getInt("availableBusinessSeats");
+                int businessPrice = resultSet.getInt("businessPrice");
+
+                System.out.println("Flight ID: " + flightId +
+                        "\nCompany ID: " + companyID +
+                        "\nOrigin ID: " + originID +
+                        "\nDestination ID: " + destinationID +
+                        "\nFlight Duration: " + duration +
+                        "\nAvailable Econom Seats: " + availableEconomSeats +
+                        "\nEconom Price: " + economPrice +
+                        "\nAvailable Business Seats: " + availableBusinessSeats +
+                        "\nBusiness Price: " + businessPrice);
+            }
+
+            resultSet.close();
+            statement.close();
+            connection.close();
+
+        }
+        catch (SQLException e) {
+            //e.printStackTrace();
+            System.out.println("[]");
+        }
+    }
 }
+
+

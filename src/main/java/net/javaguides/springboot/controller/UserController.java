@@ -26,22 +26,22 @@ import net.javaguides.springboot.exception.ResourceNotFoundException;
 public class UserController {
 
 static class RegistrationBody{
-    private String fullName;
+    private String passportNumber;
     private String password;
 
-    public RegistrationBody(String userName, String password) {
-        this.fullName = userName;
+    public RegistrationBody(String passportNumber, String password) {
+        this.passportNumber = passportNumber;
         this.password = password;
     }
-    public String getFullName() {
-        return fullName;
+    public String getPassportNumber() {
+        return passportNumber;
     }
 
     public String getPassword() {
         return password;
     }
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
+    public void setPassportNumber(String passportNumber) {
+        this.passportNumber = passportNumber;
     }
 
     public void setPassword(String password) {
@@ -76,22 +76,16 @@ static class RegistrationBody{
       oldUser.setRole(user.getRole());
         userRepository.save(oldUser);
     }
-    @PostMapping("/login")
 
+    @PostMapping("/login")
     public Optional<User> login(@RequestBody RegistrationBody body){
         Optional<User> found = Optional.empty();
         for(User i : userRepository.findAll()){
-            if(Objects.equals(i.getFullName(), body.getFullName()) && Objects.equals(i.getPassword(), body.getPassword())){
+            if(Objects.equals(i.getPassportNumber(), body.getPassportNumber()) && Objects.equals(i.getPassword(), body.getPassword())){
                 found = Optional.of(i);
             }
         }
         return found;
-    }
-
-//    @PostMapping("/registration")
-    public void registration(String fullName, String password, String role, String passportNumber, String citizenship){
-        User newUser = new User(fullName, password, role, passportNumber,citizenship);
-        userRepository.save(newUser);
     }
 
 //    // create employee rest api
