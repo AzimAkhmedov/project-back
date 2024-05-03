@@ -51,8 +51,8 @@ public class FlightController {
         Flight oldFlight = flightRepository.findById(id).get();
 
         oldFlight.setCompanyID(flight.getCompanyID());
-        oldFlight.setOriginID(flight.getOriginID());
-        oldFlight.setDestinationID(flight.getDestinationID());
+        oldFlight.setOriginCityName(flight.getOriginCityName());
+        oldFlight.setDestinationCityName(flight.getDestinationCityName());
         oldFlight.setDuration(flight.getDuration());
         oldFlight.setAvailableEconomSeats(flight.getAvailableEconomSeats());
         oldFlight.setEconomPrice(flight.getEconomPrice());
@@ -62,19 +62,11 @@ public class FlightController {
         flightRepository.save(oldFlight);
     }
 
-    @GetMapping("/flights/search_by_id")
+    @GetMapping("/flights/search_by_id/{id}")
     public void searchFlightById(@PathVariable Long id) {
 
-//        Flight foundFlight = flightRepository.findById(id).get();
-//
-//        System.out.println(foundFlight.getCompanyID() + "\n" + foundFlight.getOriginID() + "\n"
-//        + foundFlight.getDestinationID() + "\n" + foundFlight.getDuration() + "\n" + foundFlight.getAvailableEconomSeats()
-//        + "\n" + foundFlight.getEconomPrice() + "\n" + foundFlight.getAvailableBusinessSeats() + "\n" + foundFlight.getBusinessPrice());
-
-
-
         try {
-            
+
             Connection connection = DriverManager.getConnection("http://localhost:8080/api/v1");
 
             Statement statement = connection.createStatement();
@@ -87,8 +79,8 @@ public class FlightController {
 
                 Long flightId = resultSet.getLong("flightID");
                 Long companyID = resultSet.getLong("companyID");
-                Long originID = resultSet.getLong("originID");
-                Long destinationID = resultSet.getLong("destinationID");
+                String originCityName = resultSet.getNString("originCityName");
+                String destinationCityName = resultSet.getNString("destinationCityName");
                 int duration = resultSet.getInt("duration");
                 int availableEconomSeats = resultSet.getInt("availableEconomSeats");
                 int economPrice = resultSet.getInt("economPrice");
@@ -97,8 +89,8 @@ public class FlightController {
 
                 System.out.println("Flight ID: " + flightId +
                         "\nCompany ID: " + companyID +
-                        "\nOrigin ID: " + originID +
-                        "\nDestination ID: " + destinationID +
+                        "\nOrigin: " + originCityName +
+                        "\nDestination: " + destinationCityName +
                         "\nFlight Duration: " + duration +
                         "\nAvailable Econom Seats: " + availableEconomSeats +
                         "\nEconom Price: " + economPrice +
@@ -112,8 +104,52 @@ public class FlightController {
 
         }
         catch (SQLException e) {
-            //e.printStackTrace();
-            System.out.println("[]");
+            e.printStackTrace();
+        }
+    }
+
+    @GetMapping("/flights/search_by_city/{city}")
+    public void searchFlightByCity(@PathVariable String city){
+        try {
+
+            Connection connection = DriverManager.getConnection("http://localhost:8080/api/v1");
+
+            Statement statement = connection.createStatement();
+
+            String sql = "SELECT * FROM flights WHERE originCityName = " + city + "OR destinationCityName = " + city;
+            ResultSet resultSet = statement.executeQuery(sql);
+
+
+            while (resultSet.next()) {
+
+                Long flightId = resultSet.getLong("flightID");
+                Long companyID = resultSet.getLong("companyID");
+                String originCityName = resultSet.getNString("originCityName");
+                String destinationCityName = resultSet.getNString("destinationCityName");
+                int duration = resultSet.getInt("duration");
+                int availableEconomSeats = resultSet.getInt("availableEconomSeats");
+                int economPrice = resultSet.getInt("economPrice");
+                int availableBusinessSeats = resultSet.getInt("availableBusinessSeats");
+                int businessPrice = resultSet.getInt("businessPrice");
+
+                System.out.println("Flight ID: " + flightId +
+                        "\nCompany ID: " + companyID +
+                        "\nOrigin: " + originCityName +
+                        "\nDestination: " + destinationCityName +
+                        "\nFlight Duration: " + duration +
+                        "\nAvailable Econom Seats: " + availableEconomSeats +
+                        "\nEconom Price: " + economPrice +
+                        "\nAvailable Business Seats: " + availableBusinessSeats +
+                        "\nBusiness Price: " + businessPrice);
+            }
+
+            resultSet.close();
+            statement.close();
+            connection.close();
+
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
         }
     }
 }

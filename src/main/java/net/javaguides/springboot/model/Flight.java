@@ -9,10 +9,10 @@ public class Flight {
     private long flightID;
     @Column(name = "companyID")
     private long companyID;
-    @Column(name = "originID")
-    private long originID;
-    @Column(name = "destinationID")
-    private long destinationID;
+    @Column(name = "originCode")
+    private String originCityName;
+    @Column(name = "destinationCode")
+    private String destinationCityName;
     @Column(name = "duration")
     private int duration;
     @Column(name = "availableEconomSeats")
@@ -27,15 +27,15 @@ public class Flight {
     public Flight() {
     }
 
-    public Flight(long companyID, long originID, long destinationID, int duration, int availableEconomSeats, int economPrice, int availableBusinessSeats, int businessPrice){
+    public Flight(long companyID, String originCityName, String destinationCityName, int duration, int availableEconomSeats, int economPrice, int availableBusinessSeats, int businessPrice){
         super();
     }
 
-    public Flight(long flightID, long companyID, long originID, long destinationID, int duration, int availableEconomSeats, int economPrice, int availableBusinessSeats, int businessPrice) {
+    public Flight(long flightID, long companyID, String originCityName, String destinationCityName, int duration, int availableEconomSeats, int economPrice, int availableBusinessSeats, int businessPrice) {
         this.flightID = flightID;
         this.companyID = companyID;
-        this.originID = originID;
-        this.destinationID = destinationID;
+        this.originCityName = originCityName;
+        this.destinationCityName = destinationCityName;
         this.duration = duration;
         this.availableEconomSeats = availableEconomSeats;
         this.economPrice = economPrice;
@@ -51,20 +51,20 @@ public class Flight {
         this.companyID = companyID;
     }
 
-    public long getOriginID() {
-        return originID;
+    public String getOriginCityName() {
+        return originCityName;
     }
 
-    public void setOriginID(long originID) {
-        this.originID = originID;
+    public void setOriginCityName(String originCityName) {
+        this.originCityName = originCityName;
     }
 
-    public long getDestinationID() {
-        return destinationID;
+    public String getDestinationCityName() {
+        return destinationCityName;
     }
 
-    public void setDestinationID(long destinationID) {
-        this.destinationID = destinationID;
+    public void setDestinationCityName(String destinationCityName) {
+        this.destinationCityName = destinationCityName;
     }
 
     public int getDuration() {
