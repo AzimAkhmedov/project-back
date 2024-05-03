@@ -77,7 +77,7 @@ public class FlightController {
 
             while (resultSet.next()) {
 
-                Long flightId = resultSet.getLong("flightID");
+                Long flightID = resultSet.getLong("flightID");
                 Long companyID = resultSet.getLong("companyID");
                 String originCityName = resultSet.getNString("originCityName");
                 String destinationCityName = resultSet.getNString("destinationCityName");
@@ -87,7 +87,7 @@ public class FlightController {
                 int availableBusinessSeats = resultSet.getInt("availableBusinessSeats");
                 int businessPrice = resultSet.getInt("businessPrice");
 
-                System.out.println("Flight ID: " + flightId +
+                System.out.println("Flight ID: " + flightID +
                         "\nCompany ID: " + companyID +
                         "\nOrigin: " + originCityName +
                         "\nDestination: " + destinationCityName +

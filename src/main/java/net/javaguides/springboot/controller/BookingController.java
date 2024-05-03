@@ -1,9 +1,11 @@
 package net.javaguides.springboot.controller;
 
+import java.sql.*;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import jakarta.persistence.Column;
 import net.javaguides.springboot.model.Booking;
 import net.javaguides.springboot.repository.BookingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,5 +56,44 @@ public class BookingController {
         oldBooking.setFlightClass(booking.getFlightClass());
 
         bookingRepository.save(oldBooking);
+    }
+
+    @GetMapping("/bookings/search_by_id/{id}")
+    public void searchBookingById(@PathVariable Long id) {
+
+        try {
+
+            Connection connection = DriverManager.getConnection("http://localhost:8080/api/v1");
+
+            Statement statement = connection.createStatement();
+
+            String sql = "SELECT * FROM bookings WHERE userID = " + id;
+            ResultSet resultSet = statement.executeQuery(sql);
+
+
+            while (resultSet.next()) {
+
+                Long bookingID = resultSet.getLong("bookingID");
+                Long flightID = resultSet.getLong("flightID");
+                Long userID = resultSet.getLong("userID");
+                Long paymentID = resultSet.getLong("paymentID");
+                String flightClass = resultSet.getNString("flightClass");
+
+
+                System.out.println("Booking ID: " + bookingID +
+                        "\nFlight ID: " + flightID +
+                        "\nUser ID: " + userID +
+                        "\nPayment ID: " + paymentID +
+                        "\nFlight Class: " + flightClass);
+            }
+
+            resultSet.close();
+            statement.close();
+            connection.close();
+
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }
