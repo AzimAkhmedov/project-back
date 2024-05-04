@@ -15,8 +15,8 @@ public class Flight {
     private String destination_code;
     @Column(name = "duration")
     private int duration;
-    @Column(name = "date")
-    private String date;
+    @Column(name = "departure_date")
+    private String departure_date;
     @Column(name = "available_econom_seats")
     private int available_econom_seats;
     @Column(name = "economPrice")
@@ -33,13 +33,13 @@ public class Flight {
         super();
     }
 
-    public Flight(long flight_id, long companyID, String origin_code, String destination_code, int duration, String date, int available_econom_seats, int economPrice, int available_business_seats, int businessPrice) {
+    public Flight(long flight_id, long companyID, String origin_code, String destination_code, int duration, String departure_date, int available_econom_seats, int economPrice, int available_business_seats, int businessPrice) {
         this.flight_id = flight_id;
         this.company_id = companyID;
         this.origin_code = origin_code;
         this.destination_code = destination_code;
         this.duration = duration;
-        this.date = date;
+        this.departure_date = departure_date;
         this.available_econom_seats = available_econom_seats;
         this.economPrice = economPrice;
         this.available_business_seats = available_business_seats;
@@ -78,12 +78,12 @@ public class Flight {
         this.duration = duration;
     }
 
-    public String getDate() {
-        return date;
+    public String getDepartureDate() {
+        return departure_date;
     }
 
-    public void setDate(String date) {
-        this.date = date;
+    public void setDepartureDate(String departure_date) {
+        this.departure_date = departure_date;
     }
 
     public int getAvailableEconomSeats() {
