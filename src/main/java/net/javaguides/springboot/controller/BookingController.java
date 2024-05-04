@@ -67,7 +67,7 @@ public class BookingController {
 
             Statement statement = connection.createStatement();
 
-            String sql = "SELECT * FROM bookings WHERE userID = " + id;
+            String sql = "SELECT * FROM bookings WHERE user_id = " + id;
             ResultSet resultSet = statement.executeQuery(sql);
 
 

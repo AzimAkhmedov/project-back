@@ -72,13 +72,13 @@ public class FlightController {
 
             Statement statement = connection.createStatement();
 
-            String sql = "SELECT * FROM flights WHERE flightID = " + id;
+            String sql = "SELECT * FROM flights WHERE flight_id = " + id;
             ResultSet resultSet = statement.executeQuery(sql);
 
             while (resultSet.next()) {
 
-                Long flight_ID = resultSet.getLong("flight_ID");
-                Long company_ID = resultSet.getLong("company_ID");
+                Long flight_id = resultSet.getLong("flight_id");
+                Long company_id = resultSet.getLong("company_id");
                 String origin_code = resultSet.getNString("origin_code");
                 String destination_code = resultSet.getNString("destination_code");
                 int duration = resultSet.getInt("duration");
@@ -88,8 +88,8 @@ public class FlightController {
                 int available_business_seats = resultSet.getInt("available_business_seats");
                 int businessPrice = resultSet.getInt("businessPrice");
 
-                System.out.println("Flight ID: " + flight_ID +
-                        "\nCompany ID: " + company_ID +
+                System.out.println("Flight ID: " + flight_id +
+                        "\nCompany ID: " + company_id +
                         "\nOrigin: " + origin_code +
                         "\nDestination: " + destination_code +
                         "\nFlight Duration: " + duration +
@@ -118,13 +118,13 @@ public class FlightController {
 
             Statement statement = connection.createStatement();
 
-            String sql = "SELECT * FROM flights WHERE originCityName = " + city + "OR destinationCityName = " + city;
+            String sql = "SELECT * FROM flights WHERE origin_code = " + city + "OR destination_code = " + city;
             ResultSet resultSet = statement.executeQuery(sql);
 
             while (resultSet.next()) {
 
-                Long flight_ID = resultSet.getLong("flight_ID");
-                Long company_ID = resultSet.getLong("company_ID");
+                Long flight_id = resultSet.getLong("flight_id");
+                Long company_id = resultSet.getLong("company_id");
                 String origin_code = resultSet.getNString("origin_code");
                 String destination_code = resultSet.getNString("destination_code");
                 int duration = resultSet.getInt("duration");
@@ -134,8 +134,8 @@ public class FlightController {
                 int available_business_seats = resultSet.getInt("available_business_seats");
                 int businessPrice = resultSet.getInt("businessPrice");
 
-                System.out.println("Flight ID: " + flight_ID +
-                        "\nCompany ID: " + company_ID +
+                System.out.println("Flight ID: " + flight_id +
+                        "\nCompany ID: " + company_id +
                         "\nOrigin: " + origin_code +
                         "\nDestination: " + destination_code +
                         "\nFlight Duration: " + duration +
@@ -176,8 +176,8 @@ public class FlightController {
 
             while (resultSet.next()) {
 
-                Long flight_ID = resultSet.getLong("flight_ID");
-                Long company_ID = resultSet.getLong("company_ID");
+                Long flight_id = resultSet.getLong("flight_id");
+                Long company_id = resultSet.getLong("company_id");
                 String origin_code = resultSet.getNString("origin_code");
                 String destination_code = resultSet.getNString("destination_code");
                 int duration = resultSet.getInt("duration");
@@ -187,8 +187,8 @@ public class FlightController {
                 int available_business_seats = resultSet.getInt("available_business_seats");
                 int businessPrice = resultSet.getInt("businessPrice");
 
-                System.out.println("Flight ID: " + flight_ID +
-                        "\nCompany ID: " + company_ID +
+                System.out.println("Flight ID: " + flight_id +
+                        "\nCompany ID: " + company_id +
                         "\nOrigin: " + origin_code +
                         "\nDestination: " + destination_code +
                         "\nFlight Duration: " + duration +
