@@ -55,8 +55,8 @@ public class FlightController {
         oldFlight.setDestinationCityName(flight.getDestinationCityName());
         oldFlight.setDuration(flight.getDuration());
         oldFlight.setDepartureDate(flight.getDepartureDate());
-        oldFlight.setAvailableEconomSeats(flight.getAvailableEconomSeats());
-        oldFlight.setEconomPrice(flight.getEconomPrice());
+        oldFlight.setAvailableEconomySeats(flight.getAvailableEconomySeats());
+        oldFlight.setEconomyPrice(flight.getEconomyPrice());
         oldFlight.setAvailableBusinessSeats(flight.getAvailableBusinessSeats());
         oldFlight.setBusinessPrice(flight.getBusinessPrice());
 
@@ -75,29 +75,28 @@ public class FlightController {
             String sql = "SELECT * FROM flights WHERE flightID = " + id;
             ResultSet resultSet = statement.executeQuery(sql);
 
-
             while (resultSet.next()) {
 
-                Long flightID = resultSet.getLong("flightID");
-                Long companyID = resultSet.getLong("companyID");
-                String originCityName = resultSet.getNString("originCityName");
-                String destinationCityName = resultSet.getNString("destinationCityName");
+                Long flight_ID = resultSet.getLong("flight_ID");
+                Long company_ID = resultSet.getLong("company_ID");
+                String origin_code = resultSet.getNString("origin_code");
+                String destination_code = resultSet.getNString("destination_code");
                 int duration = resultSet.getInt("duration");
-                String departureDate = resultSet.getNString("departureDate");
-                int availableEconomSeats = resultSet.getInt("availableEconomSeats");
-                int economPrice = resultSet.getInt("economPrice");
-                int availableBusinessSeats = resultSet.getInt("availableBusinessSeats");
+                String departure_date = resultSet.getNString("departure_date");
+                int available_economy_seats = resultSet.getInt("available_economy_seats");
+                int economyPrice = resultSet.getInt("economyPrice");
+                int available_business_seats = resultSet.getInt("available_business_seats");
                 int businessPrice = resultSet.getInt("businessPrice");
 
-                System.out.println("Flight ID: " + flightID +
-                        "\nCompany ID: " + companyID +
-                        "\nOrigin: " + originCityName +
-                        "\nDestination: " + destinationCityName +
+                System.out.println("Flight ID: " + flight_ID +
+                        "\nCompany ID: " + company_ID +
+                        "\nOrigin: " + origin_code +
+                        "\nDestination: " + destination_code +
                         "\nFlight Duration: " + duration +
-                        "\nDeparture Date: " + departureDate +
-                        "\nAvailable Econom Seats: " + availableEconomSeats +
-                        "\nEconom Price: " + economPrice +
-                        "\nAvailable Business Seats: " + availableBusinessSeats +
+                        "\nDeparture Date: " + departure_date +
+                        "\nAvailable Economy Seats: " + available_economy_seats +
+                        "\nEconomy Price: " + economyPrice +
+                        "\nAvailable Business Seats: " + available_business_seats +
                         "\nBusiness Price: " + businessPrice);
             }
 
@@ -122,29 +121,28 @@ public class FlightController {
             String sql = "SELECT * FROM flights WHERE originCityName = " + city + "OR destinationCityName = " + city;
             ResultSet resultSet = statement.executeQuery(sql);
 
-
             while (resultSet.next()) {
 
-                Long flightId = resultSet.getLong("flightID");
-                Long companyID = resultSet.getLong("companyID");
-                String originCityName = resultSet.getNString("originCityName");
-                String destinationCityName = resultSet.getNString("destinationCityName");
+                Long flight_ID = resultSet.getLong("flight_ID");
+                Long company_ID = resultSet.getLong("company_ID");
+                String origin_code = resultSet.getNString("origin_code");
+                String destination_code = resultSet.getNString("destination_code");
                 int duration = resultSet.getInt("duration");
-                String departureDate = resultSet.getNString("departureDate");
-                int availableEconomSeats = resultSet.getInt("availableEconomSeats");
-                int economPrice = resultSet.getInt("economPrice");
-                int availableBusinessSeats = resultSet.getInt("availableBusinessSeats");
+                String departure_date = resultSet.getNString("departure_date");
+                int available_economy_seats = resultSet.getInt("available_economy_seats");
+                int economyPrice = resultSet.getInt("economyPrice");
+                int available_business_seats = resultSet.getInt("available_business_seats");
                 int businessPrice = resultSet.getInt("businessPrice");
 
-                System.out.println("Flight ID: " + flightId +
-                        "\nCompany ID: " + companyID +
-                        "\nOrigin: " + originCityName +
-                        "\nDestination: " + destinationCityName +
+                System.out.println("Flight ID: " + flight_ID +
+                        "\nCompany ID: " + company_ID +
+                        "\nOrigin: " + origin_code +
+                        "\nDestination: " + destination_code +
                         "\nFlight Duration: " + duration +
-                        "\nDeparture Date: " + departureDate +
-                        "\nAvailable Econom Seats: " + availableEconomSeats +
-                        "\nEconom Price: " + economPrice +
-                        "\nAvailable Business Seats: " + availableBusinessSeats +
+                        "\nDeparture Date: " + departure_date +
+                        "\nAvailable Economy Seats: " + available_economy_seats +
+                        "\nEconomy Price: " + economyPrice +
+                        "\nAvailable Business Seats: " + available_business_seats +
                         "\nBusiness Price: " + businessPrice);
             }
 
@@ -172,33 +170,32 @@ public class FlightController {
             Connection connection = DriverManager.getConnection("http://localhost:8080/api/v1");
 
             Statement statement = connection.createStatement();
-//select * from flights where DATE(departuredate) = '2024-04-04';
+//select * from flights where DATE(departure_date) = '2024-04-04';
             String sql = "SELECT * FROM flights WHERE DATE(departureDate) = '" + desiredDate + "'";
             ResultSet resultSet = statement.executeQuery(sql);
 
-
             while (resultSet.next()) {
 
-                Long flightId = resultSet.getLong("flightID");
-                Long companyID = resultSet.getLong("companyID");
-                String originCityName = resultSet.getNString("originCityName");
-                String destinationCityName = resultSet.getNString("destinationCityName");
+                Long flight_ID = resultSet.getLong("flight_ID");
+                Long company_ID = resultSet.getLong("company_ID");
+                String origin_code = resultSet.getNString("origin_code");
+                String destination_code = resultSet.getNString("destination_code");
                 int duration = resultSet.getInt("duration");
-                String departureDate = resultSet.getNString("departureDate");
-                int availableEconomSeats = resultSet.getInt("availableEconomSeats");
-                int economPrice = resultSet.getInt("economPrice");
-                int availableBusinessSeats = resultSet.getInt("availableBusinessSeats");
+                String departure_date = resultSet.getNString("departure_date");
+                int available_economy_seats = resultSet.getInt("available_economy_seats");
+                int economyPrice = resultSet.getInt("economyPrice");
+                int available_business_seats = resultSet.getInt("available_business_seats");
                 int businessPrice = resultSet.getInt("businessPrice");
 
-                System.out.println("Flight ID: " + flightId +
-                        "\nCompany ID: " + companyID +
-                        "\nOrigin: " + originCityName +
-                        "\nDestination: " + destinationCityName +
+                System.out.println("Flight ID: " + flight_ID +
+                        "\nCompany ID: " + company_ID +
+                        "\nOrigin: " + origin_code +
+                        "\nDestination: " + destination_code +
                         "\nFlight Duration: " + duration +
-                        "\nDeparture Date: " + departureDate +
-                        "\nAvailable Econom Seats: " + availableEconomSeats +
-                        "\nEconom Price: " + economPrice +
-                        "\nAvailable Business Seats: " + availableBusinessSeats +
+                        "\nDeparture Date: " + departure_date +
+                        "\nAvailable Economy Seats: " + available_economy_seats +
+                        "\nEconomy Price: " + economyPrice +
+                        "\nAvailable Business Seats: " + available_business_seats +
                         "\nBusiness Price: " + businessPrice);
             }
 

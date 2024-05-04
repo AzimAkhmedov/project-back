@@ -17,10 +17,10 @@ public class Flight {
     private int duration;
     @Column(name = "departure_date")
     private String departure_date;
-    @Column(name = "available_econom_seats")
-    private int available_econom_seats;
-    @Column(name = "economPrice")
-    private int economPrice;
+    @Column(name = "available_economy_seats")
+    private int available_economy_seats;
+    @Column(name = "economyPrice")
+    private int economyPrice;
     @Column(name = "available_business_seats")
     private int available_business_seats;
     @Column(name = "businessPrice")
@@ -40,8 +40,8 @@ public class Flight {
         this.destination_code = destination_code;
         this.duration = duration;
         this.departure_date = departure_date;
-        this.available_econom_seats = available_econom_seats;
-        this.economPrice = economPrice;
+        this.available_economy_seats = available_econom_seats;
+        this.economyPrice = economPrice;
         this.available_business_seats = available_business_seats;
         this.businessPrice = businessPrice;
     }
@@ -86,20 +86,20 @@ public class Flight {
         this.departure_date = departure_date;
     }
 
-    public int getAvailableEconomSeats() {
-        return available_econom_seats;
+    public int getAvailableEconomySeats() {
+        return available_economy_seats;
     }
 
-    public void setAvailableEconomSeats(int available_econom_seats) {
-        this.available_econom_seats = available_econom_seats;
+    public void setAvailableEconomySeats(int available_economy_seats) {
+        this.available_economy_seats = available_economy_seats;
     }
 
-    public int getEconomPrice() {
-        return economPrice;
+    public int getEconomyPrice() {
+        return economyPrice;
     }
 
-    public void setEconomPrice(int economPrice) {
-        this.economPrice = economPrice;
+    public void setEconomyPrice(int economyPrice) {
+        this.economyPrice = economyPrice;
     }
 
     public int getAvailableBusinessSeats() {
