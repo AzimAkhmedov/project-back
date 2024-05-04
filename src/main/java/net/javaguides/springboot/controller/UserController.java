@@ -4,23 +4,19 @@ import java.util.*;
 
 import net.javaguides.springboot.model.User;
 import net.javaguides.springboot.repository.UserRepository;
+import net.javaguides.springboot.response.ErrorMessage;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Example;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import net.javaguides.springboot.exception.ResourceNotFoundException;
+import org.springframework.web.server.ResponseStatusException;
 //import net.javaguides.springboot.model.Employee;
 //import net.javaguides.springboot.repository.EmployeeRepository;
 
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin
 @RestController
 @RequestMapping("/api/v1/")
 public class UserController {
@@ -78,15 +74,21 @@ static class RegistrationBody{
     }
 
     @PostMapping("/login")
-    public Optional<User> login(@RequestBody RegistrationBody body){
-        Optional<User> found = Optional.empty();
-        for(User i : userRepository.findAll()){
-            if(Objects.equals(i.getPassportNumber(), body.getPassportNumber()) && Objects.equals(i.getPassword(), body.getPassword())){
-                found = Optional.of(i);
+    public ResponseEntity<Object> login(@RequestBody RegistrationBody body)  {
+            User user = userRepository.findByPassportNumberAndPassword(body.getPassportNumber(), body.getPassword());
+            if (user==null){
+                return new ResponseEntity<>(new ErrorMessage("No match for provided passport number or password"), HttpStatus.NOT_FOUND);
             }
-        }
-        return found;
+            return new ResponseEntity<>(user, HttpStatus.OK );
     }
+
+    @ExceptionHandler
+    public void handleException() {
+        //
+    }
+
+//    @ExceptionHandler({ CustomException1.class, CustomException2.class })
+
 
 //    // create employee rest api
 //    @PostMapping("/employees")
