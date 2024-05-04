@@ -6,60 +6,60 @@ import jakarta.persistence.*;
 public class Booking {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long bookingID;
-    @Column(name = "flightID")
-    private long flightID;
-    @Column(name = "userID")
-    private long userID;
-    @Column(name = "paymentID")
-    private long paymentID;
-    @Column(name = "flightClass")
-    private String flightClass;
+    private long booking_id;
+    @Column(name = "flight_id")
+    private long flight_id;
+    @Column(name = "user_id")
+    private long user_id;
+    @Column(name = "payment_id")
+    private long payment_id;
+    @Column(name = "flight_class")
+    private String flight_class;
 
     public Booking() {
     }
 
-    public Booking(long flightID, long userID, long paymentID, String flightClass){
+    public Booking(long flight_id, long userID, long paymentID, String flight_class){
         super();
     }
 
-    public Booking(long bookingID, long flightID, long userID, long paymentID, String flightClass) {
-        this.bookingID = bookingID;
-        this.flightID = flightID;
-        this.userID = userID;
-        this.paymentID = paymentID;
-        this.flightClass = flightClass;
+    public Booking(long booking_id, long flight_id, long user_id, long payment_id, String flightClass) {
+        this.booking_id = booking_id;
+        this.flight_id = flight_id;
+        this.user_id = user_id;
+        this.payment_id = payment_id;
+        this.flight_class = flight_class;
     }
 
     public long getFlightID() {
-        return flightID;
+        return flight_id;
     }
 
-    public void setFlightID(long flightID) {
-        this.flightID = flightID;
+    public void setFlightID(long flight_id) {
+        this.flight_id = flight_id;
     }
 
     public long getUserID() {
-        return userID;
+        return user_id;
     }
 
     public void setUserID(long userID) {
-        this.userID = userID;
+        this.user_id = userID;
     }
 
     public long getPaymentID() {
-        return paymentID;
+        return payment_id;
     }
 
-    public void setPaymentID(long paymentID) {
-        this.paymentID = paymentID;
+    public void setPaymentID(long payment_id) {
+        this.payment_id = payment_id;
     }
 
     public String getFlightClass() {
-        return flightClass;
+        return flight_class;
     }
 
-    public void setFlightClass(String flightClass) {
-        this.flightClass = flightClass;
+    public void setFlightClass(String flight_class) {
+        this.flight_class = flight_class;
     }
 }

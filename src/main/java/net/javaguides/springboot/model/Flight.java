@@ -6,23 +6,23 @@ import jakarta.persistence.*;
 public class Flight {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long flightID;
-    @Column(name = "companyID")
-    private long companyID;
-    @Column(name = "originCode")
-    private String originCityName;
-    @Column(name = "destinationCode")
-    private String destinationCityName;
+    private long flight_id;
+    @Column(name = "company_id")
+    private long company_id;
+    @Column(name = "origin_code")
+    private String origin_code;
+    @Column(name = "destination_code")
+    private String destination_code;
     @Column(name = "duration")
     private int duration;
     @Column(name = "date")
     private String date;
-    @Column(name = "availableEconomSeats")
-    private int availableEconomSeats;
+    @Column(name = "available_econom_seats")
+    private int available_econom_seats;
     @Column(name = "economPrice")
     private int economPrice;
-    @Column(name = "availableBusinessSeats")
-    private int availableBusinessSeats;
+    @Column(name = "available_business_seats")
+    private int available_business_seats;
     @Column(name = "businessPrice")
     private int businessPrice;
 
@@ -33,41 +33,41 @@ public class Flight {
         super();
     }
 
-    public Flight(long flightID, long companyID, String originCityName, String destinationCityName, int duration, String date, int availableEconomSeats, int economPrice, int availableBusinessSeats, int businessPrice) {
-        this.flightID = flightID;
-        this.companyID = companyID;
-        this.originCityName = originCityName;
-        this.destinationCityName = destinationCityName;
+    public Flight(long flight_id, long companyID, String origin_code, String destination_code, int duration, String date, int available_econom_seats, int economPrice, int available_business_seats, int businessPrice) {
+        this.flight_id = flight_id;
+        this.company_id = companyID;
+        this.origin_code = origin_code;
+        this.destination_code = destination_code;
         this.duration = duration;
         this.date = date;
-        this.availableEconomSeats = availableEconomSeats;
+        this.available_econom_seats = available_econom_seats;
         this.economPrice = economPrice;
-        this.availableBusinessSeats = availableBusinessSeats;
+        this.available_business_seats = available_business_seats;
         this.businessPrice = businessPrice;
     }
 
     public long getCompanyID() {
-        return companyID;
+        return company_id;
     }
 
     public void setCompanyID(long companyID) {
-        this.companyID = companyID;
+        this.company_id = companyID;
     }
 
     public String getOriginCityName() {
-        return originCityName;
+        return origin_code;
     }
 
-    public void setOriginCityName(String originCityName) {
-        this.originCityName = originCityName;
+    public void setOriginCityName(String origin_code) {
+        this.origin_code = origin_code;
     }
 
     public String getDestinationCityName() {
-        return destinationCityName;
+        return destination_code;
     }
 
-    public void setDestinationCityName(String destinationCityName) {
-        this.destinationCityName = destinationCityName;
+    public void setDestinationCityName(String destination_code) {
+        this.destination_code = destination_code;
     }
 
     public int getDuration() {
@@ -87,11 +87,11 @@ public class Flight {
     }
 
     public int getAvailableEconomSeats() {
-        return availableEconomSeats;
+        return available_econom_seats;
     }
 
-    public void setAvailableEconomSeats(int availableEconomSeats) {
-        this.availableEconomSeats = availableEconomSeats;
+    public void setAvailableEconomSeats(int available_econom_seats) {
+        this.available_econom_seats = available_econom_seats;
     }
 
     public int getEconomPrice() {
@@ -103,11 +103,11 @@ public class Flight {
     }
 
     public int getAvailableBusinessSeats() {
-        return availableBusinessSeats;
+        return available_business_seats;
     }
 
     public void setAvailableBusinessSeats(int availableBusinessSeats) {
-        this.availableBusinessSeats = availableBusinessSeats;
+        this.available_business_seats = availableBusinessSeats;
     }
 
     public int getBusinessPrice() {

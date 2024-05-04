@@ -6,13 +6,13 @@ import jakarta.persistence.*;
 public class Country {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long countryID;
+    private long country_id;
 
-    @Column(name = "countryCode")
-    private String countryCode;
+    @Column(name = "country_code")
+    private String country_code;
 
-    @Column(name = "countryName")
-    private String countryName;
+    @Column(name = "country_name")
+    private String country_name;
 
     public Country() {
     }
@@ -21,25 +21,25 @@ public class Country {
         super();
     }
 
-    public Country(long countryID, String countryCode, String countryName) {
-        this.countryID = countryID;
-        this.countryCode = countryCode;
-        this.countryName = countryName;
+    public Country(long country_id, String country_code, String country_name) {
+        this.country_id = country_id;
+        this.country_code = country_code;
+        this.country_name = country_name;
     }
 
     public String getCountryCode() {
-        return countryCode;
+        return country_code;
     }
 
-    public void setCountryCode(String countryCode) {
-        this.countryCode = countryCode;
+    public void setCountryCode(String country_code) {
+        this.country_code = country_code;
     }
 
     public String getCountryName() {
-        return countryName;
+        return country_name;
     }
 
-    public void setCountryName(String countryName) {
-        this.countryName = countryName;
+    public void setCountryName(String country_name) {
+        this.country_name = country_name;
     }
 }

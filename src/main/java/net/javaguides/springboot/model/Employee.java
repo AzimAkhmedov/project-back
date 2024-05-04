@@ -6,9 +6,9 @@ import jakarta.persistence.*;
 public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long userID;
-    @Column(name = "companyID")
-    private long companyID;
+    private long user_id;
+    @Column(name = "company_id")
+    private long company_id;
 
     public Employee() {
     }
@@ -17,16 +17,16 @@ public class Employee {
         super();
     }
 
-    public Employee(long userID, long companyID) {
-        this.userID = userID;
-        this.companyID = companyID;
+    public Employee(long user_id, long companyID) {
+        this.user_id = user_id;
+        this.company_id = company_id;
     }
 
     public long getCompanyID() {
-        return companyID;
+        return company_id;
     }
 
-    public void setCompanyID(long companyID) {
-        this.companyID = companyID;
+    public void setCompanyID(long company_id) {
+        this.company_id = company_id;
     }
 }

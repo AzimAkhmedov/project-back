@@ -6,15 +6,15 @@ import jakarta.persistence.*;
 public class Payment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long paymentID;
-    @Column(name = "recipientID")
-    private long recipientID;
-    @Column(name = "senderID")
-    private long senderID;
+    private long payment_id;
+    @Column(name = "sender_id")
+    private long sender_id;
+    @Column (name = "recipient_id")
+    private long recipient_id;
     @Column(name = "date")
     private String date;
-    @Column(name = "paymentStatus")
-    private String paymentStatus;
+    @Column(name = "payment_status")
+    private String payment_status;
     @Column(name = "amount")
     private int amount;
 
@@ -25,29 +25,29 @@ public class Payment {
         super();
     }
 
-    public Payment(long paymentID, long recipientID, long senderID, String date, String paymentStatus, int amount) {
-        this.paymentID = paymentID;
-        this.recipientID = recipientID;
-        this.senderID = senderID;
+    public Payment(long payment_id, long recipient_id, long sender_id, String date, String payment_status, int amount) {
+        this.payment_id = payment_id;
+        this.recipient_id = recipient_id;
+        this.sender_id = sender_id;
         this.date = date;
-        this.paymentStatus = paymentStatus;
+        this.payment_status = payment_status;
         this.amount = amount;
     }
 
     public long getRecipientID() {
-        return recipientID;
+        return recipient_id;
     }
 
-    public void setRecipientID(long recipientID) {
-        this.recipientID = recipientID;
+    public void setRecipientID(long recipient_id) {
+        this.recipient_id = recipient_id;
     }
 
     public long getSenderID() {
-        return senderID;
+        return sender_id;
     }
 
-    public void setSenderID(long senderID) {
-        this.senderID = senderID;
+    public void setSenderID(long sender_id) {
+        this.sender_id = sender_id;
     }
 
     public String getDate() {
@@ -59,11 +59,11 @@ public class Payment {
     }
 
     public String getPaymentStatus() {
-        return paymentStatus;
+        return payment_status;
     }
 
-    public void setPaymentStatus(String paymentStatus) {
-        this.paymentStatus = paymentStatus;
+    public void setPaymentStatus(String payment_status) {
+        this.payment_status = payment_status;
     }
 
     public int getAmount() {

@@ -10,38 +10,38 @@ public class City {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long flightID;
 
-    @Column(name = "cityName")
-    private String cityName;
+    @Column(name = "city_name")
+    private String city_name;
 
-    @Column(name = "countryID")
-    private long countryID;
+    @Column(name = "country_id")
+    private long country_id;
 
     public City() {
     }
 
-    public City(String cityName, Long countryID) {
+    public City(String city_name, Long country_id) {
         super();
     }
 
-    public City(long flightID, String cityName, Long countryID) {
+    public City(long flightID, String city_name, Long country_id) {
         this.flightID = flightID;
-        this.cityName = cityName;
-        this.countryID = countryID;
+        this.city_name = city_name;
+        this.country_id = country_id;
     }
 
     public String getCityName() {
-        return cityName;
+        return city_name;
     }
 
     public void setCityName(String cityName) {
-        this.cityName = cityName;
+        this.city_name = cityName;
     }
 
     public Long getCountryID() {
-        return countryID;
+        return country_id;
     }
 
-    public void setCountryID(Long countryID) {
-        this.countryID = countryID;
+    public void setCountryID(Long country_id) {
+        this.country_id = country_id;
     }
 }
