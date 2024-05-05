@@ -2,6 +2,7 @@ package net.javaguides.springboot.controller;
 
 import java.sql.*;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -22,7 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import net.javaguides.springboot.exception.ResourceNotFoundException;
 
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin
 @RestController
 @RequestMapping("/api/v1/")
 
@@ -167,49 +168,9 @@ public class FlightController {
      */
 
     @GetMapping("/flights/search_by_date/{desiredDate}")
-    public void searchFlightByDepartureDate(@PathVariable String desiredDate){
-        try {
 
-            Connection connection = DriverManager.getConnection("http://localhost:8080/api/v1");
-
-            Statement statement = connection.createStatement();
-//select * from flights where DATE(departure_date) = '2024-04-04';
-            String sql = "SELECT * FROM flights WHERE DATE(departureDate) = '" + desiredDate + "'";
-            ResultSet resultSet = statement.executeQuery(sql);
-
-            while (resultSet.next()) {
-
-                long flight_id = resultSet.getLong("flight_id");
-                long company_id = resultSet.getLong("company_id");
-                long origin_id = resultSet.getLong("origin_id");
-                long destination_id = resultSet.getLong("destination_id");
-                int duration = resultSet.getInt("duration");
-                String departure_date = resultSet.getNString("departure_date");
-                int available_economy_seats = resultSet.getInt("available_economy_seats");
-                int economyPrice = resultSet.getInt("economyPrice");
-                int available_business_seats = resultSet.getInt("available_business_seats");
-                int businessPrice = resultSet.getInt("businessPrice");
-
-                System.out.println("Flight ID: " + flight_id +
-                        "\nCompany ID: " + company_id +
-                        "\nOrigin ID: " + origin_id +
-                        "\nDestination ID: " + destination_id +
-                        "\nFlight Duration: " + duration +
-                        "\nDeparture Date: " + departure_date +
-                        "\nAvailable Economy Seats: " + available_economy_seats +
-                        "\nEconomy Price: " + economyPrice +
-                        "\nAvailable Business Seats: " + available_business_seats +
-                        "\nBusiness Price: " + businessPrice);
-            }
-
-            resultSet.close();
-            statement.close();
-            connection.close();
-
-        }
-        catch (SQLException e) {
-            e.printStackTrace();
-        }
+    public List<Flight> searchFlightByDepartureDate(@PathVariable String desiredDate) throws SQLException{
+     return flightRepository.findFlightByDeparture_date(desiredDate);
     }
 }
 

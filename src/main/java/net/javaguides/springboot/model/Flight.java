@@ -14,16 +14,17 @@ public class Flight {
     @Column(name = "destination_id")
     private long destination_id;
     @Column(name = "duration")
+
     private int duration;
     @Column(name = "departure_date")
     private String departure_date;
     @Column(name = "available_economy_seats")
     private int available_economy_seats;
-    @Column(name = "economyPrice")
+    @Column(name = "economy_price")
     private int economyPrice;
-    @Column(name = "available_business_seats")
+        @Column(name = "available_business_seats")
     private int available_business_seats;
-    @Column(name = "businessPrice")
+    @Column(name = "business_price")
     private int businessPrice;
 
     public Flight() {
