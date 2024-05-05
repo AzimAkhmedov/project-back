@@ -9,10 +9,10 @@ public class Flight {
     private long flight_id;
     @Column(name = "company_id")
     private long company_id;
-    @Column(name = "origin_code")
-    private String origin_code;
-    @Column(name = "destination_code")
-    private String destination_code;
+    @Column(name = "origin")
+    private String origin;
+    @Column(name = "destination")
+    private String destination;
     @Column(name = "duration")
     private int duration;
     @Column(name = "departure_date")
@@ -29,19 +29,19 @@ public class Flight {
     public Flight() {
     }
 
-    public Flight(long companyID, String originCityName, String destinationCityName, int duration, String date, int availableEconomSeats, int economPrice, int availableBusinessSeats, int businessPrice){
+    public Flight(long companyID, String originCityName, String destinationCityName, int duration, String date, int availableEconomySeats, int economyPrice, int availableBusinessSeats, int businessPrice){
         super();
     }
 
-    public Flight(long flight_id, long companyID, String origin_code, String destination_code, int duration, String departure_date, int available_econom_seats, int economPrice, int available_business_seats, int businessPrice) {
+    public Flight(long flight_id, long company_id, String origin, String destination, int duration, String departure_date, int available_economy_seats, int economyPrice, int available_business_seats, int businessPrice) {
         this.flight_id = flight_id;
-        this.company_id = companyID;
-        this.origin_code = origin_code;
-        this.destination_code = destination_code;
+        this.company_id = company_id;
+        this.origin = origin;
+        this.destination = destination;
         this.duration = duration;
         this.departure_date = departure_date;
-        this.available_economy_seats = available_econom_seats;
-        this.economyPrice = economPrice;
+        this.available_economy_seats = available_economy_seats;
+        this.economyPrice = economyPrice;
         this.available_business_seats = available_business_seats;
         this.businessPrice = businessPrice;
     }
@@ -55,19 +55,19 @@ public class Flight {
     }
 
     public String getOriginCityName() {
-        return origin_code;
+        return origin;
     }
 
-    public void setOriginCityName(String origin_code) {
-        this.origin_code = origin_code;
+    public void setOriginCityName(String origin) {
+        this.origin = origin;
     }
 
     public String getDestinationCityName() {
-        return destination_code;
+        return destination;
     }
 
-    public void setDestinationCityName(String destination_code) {
-        this.destination_code = destination_code;
+    public void setDestinationCityName(String destination) {
+        this.destination = destination;
     }
 
     public int getDuration() {

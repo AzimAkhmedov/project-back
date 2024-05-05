@@ -23,7 +23,7 @@ public class Booking {
         super();
     }
 
-    public Booking(long booking_id, long flight_id, long user_id, long payment_id, String flightClass) {
+    public Booking(long booking_id, long flight_id, long user_id, long payment_id, String flight_class) {
         this.booking_id = booking_id;
         this.flight_id = flight_id;
         this.user_id = user_id;

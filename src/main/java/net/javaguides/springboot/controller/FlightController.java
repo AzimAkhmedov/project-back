@@ -79,8 +79,8 @@ public class FlightController {
 
                 Long flight_id = resultSet.getLong("flight_id");
                 Long company_id = resultSet.getLong("company_id");
-                String origin_code = resultSet.getNString("origin_code");
-                String destination_code = resultSet.getNString("destination_code");
+                String origin = resultSet.getNString("origin");
+                String destination = resultSet.getNString("destination");
                 int duration = resultSet.getInt("duration");
                 String departure_date = resultSet.getNString("departure_date");
                 int available_economy_seats = resultSet.getInt("available_economy_seats");
@@ -90,8 +90,8 @@ public class FlightController {
 
                 System.out.println("Flight ID: " + flight_id +
                         "\nCompany ID: " + company_id +
-                        "\nOrigin: " + origin_code +
-                        "\nDestination: " + destination_code +
+                        "\nOrigin: " + origin +
+                        "\nDestination: " + destination +
                         "\nFlight Duration: " + duration +
                         "\nDeparture Date: " + departure_date +
                         "\nAvailable Economy Seats: " + available_economy_seats +
@@ -125,8 +125,8 @@ public class FlightController {
 
                 Long flight_id = resultSet.getLong("flight_id");
                 Long company_id = resultSet.getLong("company_id");
-                String origin_code = resultSet.getNString("origin_code");
-                String destination_code = resultSet.getNString("destination_code");
+                String origin = resultSet.getNString("origin");
+                String destination = resultSet.getNString("destination");
                 int duration = resultSet.getInt("duration");
                 String departure_date = resultSet.getNString("departure_date");
                 int available_economy_seats = resultSet.getInt("available_economy_seats");
@@ -136,8 +136,8 @@ public class FlightController {
 
                 System.out.println("Flight ID: " + flight_id +
                         "\nCompany ID: " + company_id +
-                        "\nOrigin: " + origin_code +
-                        "\nDestination: " + destination_code +
+                        "\nOrigin: " + origin +
+                        "\nDestination: " + destination +
                         "\nFlight Duration: " + duration +
                         "\nDeparture Date: " + departure_date +
                         "\nAvailable Economy Seats: " + available_economy_seats +
@@ -178,8 +178,8 @@ public class FlightController {
 
                 Long flight_id = resultSet.getLong("flight_id");
                 Long company_id = resultSet.getLong("company_id");
-                String origin_code = resultSet.getNString("origin_code");
-                String destination_code = resultSet.getNString("destination_code");
+                String origin = resultSet.getNString("origin");
+                String destination = resultSet.getNString("destination");
                 int duration = resultSet.getInt("duration");
                 String departure_date = resultSet.getNString("departure_date");
                 int available_economy_seats = resultSet.getInt("available_economy_seats");
@@ -189,8 +189,8 @@ public class FlightController {
 
                 System.out.println("Flight ID: " + flight_id +
                         "\nCompany ID: " + company_id +
-                        "\nOrigin: " + origin_code +
-                        "\nDestination: " + destination_code +
+                        "\nOrigin: " + origin +
+                        "\nDestination: " + destination +
                         "\nFlight Duration: " + duration +
                         "\nDeparture Date: " + departure_date +
                         "\nAvailable Economy Seats: " + available_economy_seats +

@@ -8,7 +8,7 @@ import org.springframework.cache.annotation.CacheConfig;
 public class City {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long flightID;
+    private long city_id;
 
     @Column(name = "city_name")
     private String city_name;
@@ -23,8 +23,8 @@ public class City {
         super();
     }
 
-    public City(long flightID, String city_name, Long country_id) {
-        this.flightID = flightID;
+    public City(long city_id, String city_name, Long country_id) {
+        this.city_id = city_id;
         this.city_name = city_name;
         this.country_id = country_id;
     }
