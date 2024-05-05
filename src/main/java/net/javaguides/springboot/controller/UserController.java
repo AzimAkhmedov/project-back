@@ -56,8 +56,13 @@ static class RegistrationBody{
         return userRepository.findAll();
     }
     @PostMapping("/registration")
-    public  User createUser(@RequestBody User user){
-        return userRepository.save(user);
+    public  ResponseEntity<Object> createUser(@RequestBody User user){
+        System.out.println(user.getFullname());
+        try {
+        return new ResponseEntity<>(userRepository.save(user), HttpStatus.OK );
+        }catch (Error e){
+        return new ResponseEntity<>(new ErrorMessage("Bruh, registration failed "+e.getMessage()), HttpStatus.BAD_GATEWAY );
+     }
     }
     @DeleteMapping("/user/{id}")
     public  void  deleteUser(@PathVariable Long id){
@@ -68,7 +73,7 @@ static class RegistrationBody{
       User oldUser = userRepository.findById(id).get();
         // crush the variables of the object found
       oldUser.setPassword(user.getPassword());
-      oldUser.setFullName(user.getFullName());
+      oldUser.setFullname(user.getFullname());
       oldUser.setRole(user.getRole());
         userRepository.save(oldUser);
     }
