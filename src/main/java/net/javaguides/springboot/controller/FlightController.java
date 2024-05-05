@@ -51,8 +51,8 @@ public class FlightController {
         Flight oldFlight = flightRepository.findById(id).get();
 
         oldFlight.setCompanyID(flight.getCompanyID());
-        oldFlight.setOriginCityName(flight.getOriginCityName());
-        oldFlight.setDestinationCityName(flight.getDestinationCityName());
+        oldFlight.setOriginID(flight.getOriginID());
+        oldFlight.setDestinationID(flight.getDestinationID());
         oldFlight.setDuration(flight.getDuration());
         oldFlight.setDepartureDate(flight.getDepartureDate());
         oldFlight.setAvailableEconomySeats(flight.getAvailableEconomySeats());
@@ -77,10 +77,10 @@ public class FlightController {
 
             while (resultSet.next()) {
 
-                Long flight_id = resultSet.getLong("flight_id");
-                Long company_id = resultSet.getLong("company_id");
-                String origin = resultSet.getNString("origin");
-                String destination = resultSet.getNString("destination");
+                long flight_id = resultSet.getLong("flight_id");
+                long company_id = resultSet.getLong("company_id");
+                long origin_id = resultSet.getLong("origin_id");
+                long destination_id = resultSet.getLong("destination_id");
                 int duration = resultSet.getInt("duration");
                 String departure_date = resultSet.getNString("departure_date");
                 int available_economy_seats = resultSet.getInt("available_economy_seats");
@@ -90,8 +90,8 @@ public class FlightController {
 
                 System.out.println("Flight ID: " + flight_id +
                         "\nCompany ID: " + company_id +
-                        "\nOrigin: " + origin +
-                        "\nDestination: " + destination +
+                        "\nOrigin ID: " + origin_id +
+                        "\nDestination ID: " + destination_id +
                         "\nFlight Duration: " + duration +
                         "\nDeparture Date: " + departure_date +
                         "\nAvailable Economy Seats: " + available_economy_seats +
@@ -118,15 +118,18 @@ public class FlightController {
 
             Statement statement = connection.createStatement();
 
-            String sql = "SELECT * FROM flights WHERE origin_code = " + city + "OR destination_code = " + city;
+            String sql = "SELECT flights.*\n" +
+                    "FROM flights INNER JOIN cities\n" +
+                    "ON flights.origin_id = cities.city_id OR flights.destination_id = cities.city_id\n" +
+                    "WHERE city_name = '" + city + "'";
             ResultSet resultSet = statement.executeQuery(sql);
 
             while (resultSet.next()) {
 
-                Long flight_id = resultSet.getLong("flight_id");
-                Long company_id = resultSet.getLong("company_id");
-                String origin = resultSet.getNString("origin");
-                String destination = resultSet.getNString("destination");
+                long flight_id = resultSet.getLong("flight_id");
+                long company_id = resultSet.getLong("company_id");
+                long origin_id = resultSet.getLong("origin_id");
+                long destination_id = resultSet.getLong("destination_id");
                 int duration = resultSet.getInt("duration");
                 String departure_date = resultSet.getNString("departure_date");
                 int available_economy_seats = resultSet.getInt("available_economy_seats");
@@ -136,8 +139,8 @@ public class FlightController {
 
                 System.out.println("Flight ID: " + flight_id +
                         "\nCompany ID: " + company_id +
-                        "\nOrigin: " + origin +
-                        "\nDestination: " + destination +
+                        "\nOrigin ID: " + origin_id +
+                        "\nDestination ID: " + destination_id +
                         "\nFlight Duration: " + duration +
                         "\nDeparture Date: " + departure_date +
                         "\nAvailable Economy Seats: " + available_economy_seats +
@@ -176,10 +179,10 @@ public class FlightController {
 
             while (resultSet.next()) {
 
-                Long flight_id = resultSet.getLong("flight_id");
-                Long company_id = resultSet.getLong("company_id");
-                String origin = resultSet.getNString("origin");
-                String destination = resultSet.getNString("destination");
+                long flight_id = resultSet.getLong("flight_id");
+                long company_id = resultSet.getLong("company_id");
+                long origin_id = resultSet.getLong("origin_id");
+                long destination_id = resultSet.getLong("destination_id");
                 int duration = resultSet.getInt("duration");
                 String departure_date = resultSet.getNString("departure_date");
                 int available_economy_seats = resultSet.getInt("available_economy_seats");
@@ -189,8 +192,8 @@ public class FlightController {
 
                 System.out.println("Flight ID: " + flight_id +
                         "\nCompany ID: " + company_id +
-                        "\nOrigin: " + origin +
-                        "\nDestination: " + destination +
+                        "\nOrigin ID: " + origin_id +
+                        "\nDestination ID: " + destination_id +
                         "\nFlight Duration: " + duration +
                         "\nDeparture Date: " + departure_date +
                         "\nAvailable Economy Seats: " + available_economy_seats +
