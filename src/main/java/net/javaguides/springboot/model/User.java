@@ -8,7 +8,7 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     @Column(name = "fullname")
-    private String 	fullName;
+    private String 	fullname;
     @Column(name = "password")
     private String password;
     @Column(name = "role")
@@ -22,25 +22,25 @@ public class User {
 
     }
 
-    public User(String fullName, String password, String role, String passportNumber, String citizenship) {
+    public User(String fullname, String password, String role, String passportNumber, String citizenship) {
         super();
     }
 
-    public User(long id, String fullName, String password, String role, String passportNumber, String citizenship) {
+    public User(long id, String fullname, String password, String role, String passportNumber, String citizenship) {
         this.id = id;
-        this.fullName = fullName;
+        this.fullname = fullname;
         this.password = password;
         this.role = role;
         this.passportNumber = passportNumber;
         this.citizenship = citizenship;
     }
 
-    public String getFullName() {
-        return fullName;
+    public String getFullname() {
+        return fullname;
     }
 
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
+    public void setFullname(String fullname) {
+        this.fullname = fullname;
     }
 
     public String getPassword() {
