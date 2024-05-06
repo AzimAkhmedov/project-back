@@ -13,4 +13,6 @@ public interface FlightRepository extends JpaRepository<Flight, Long>{
     @Query("SELECT u FROM Flight u WHERE u.departure_date = :departure_date")
     List<Flight> findFlightByDeparture_date(@Param("departure_date") String departure_date);
 
+    @Query("select  f from Flight  f where f.company_id =:company_id")
+    List<Flight> findFlightByCompany_id(@Param("company_id") Integer company_id);
 }

@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import net.javaguides.springboot.exception.ResourceNotFoundException;
 
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin
 @RestController
 @RequestMapping("/api/v1/")
 
@@ -36,6 +36,7 @@ public class CompanyController {
 
     @PostMapping("/add_company")
     public Company createCompany(@RequestBody Company company){
+        System.out.println(company.getCountryID());
         return companyRepository.save(company);
     }
 

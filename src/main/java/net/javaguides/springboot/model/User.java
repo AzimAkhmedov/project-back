@@ -22,7 +22,7 @@ public class User {
 
     }
 
-    public User(String fullname, String password, String role, String passportNumber, String citizenship) {
+    public User(String fullname, String password, String role, String passportNumber, String citizenship, long id) {
         super();
     }
 
@@ -37,6 +37,10 @@ public class User {
 
     public String getFullname() {
         return fullname;
+    }
+
+    public long getId() {
+        return this.id;
     }
 
     public void setFullname(String fullname) {

@@ -27,6 +27,10 @@ public class Country {
         this.country_name = country_name;
     }
 
+    public long getCountry_id() {
+        return country_id;
+    }
+
     public String getCountryCode() {
         return country_code;
     }

@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import net.javaguides.springboot.exception.ResourceNotFoundException;
 
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin
 @RestController
 @RequestMapping("/api/v1/")
 

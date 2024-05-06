@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 
 public class Employee {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "user_id")
     private long user_id;
     @Column(name = "company_id")
     private long company_id;
@@ -13,13 +13,13 @@ public class Employee {
     public Employee() {
     }
 
-    public Employee(long companyID){
+    public Employee(int user_id,long companyID){
         super();
     }
 
     public Employee(long user_id, long companyID) {
         this.user_id = user_id;
-        this.company_id = company_id;
+        this.company_id = companyID;
     }
 
     public long getCompanyID() {
@@ -29,4 +29,9 @@ public class Employee {
     public void setCompanyID(long company_id) {
         this.company_id = company_id;
     }
+    public long getUserID(){return  user_id;};
+    public void setUserID(long user_id) {
+        this.user_id = user_id;
+    }
+
 }

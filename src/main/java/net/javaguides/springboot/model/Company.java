@@ -25,6 +25,10 @@ public class Company {
         this.country_id = country_id;
     }
 
+    public long getCompany_id() {
+        return company_id;
+    }
+
     public String getCompanyName() {
         return company_name;
     }

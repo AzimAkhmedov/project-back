@@ -47,6 +47,10 @@ public class Flight {
         this.businessPrice = businessPrice;
     }
 
+    public long getFlight_id() {
+        return flight_id;
+    }
+
     public long getCompanyID() {
         return company_id;
     }

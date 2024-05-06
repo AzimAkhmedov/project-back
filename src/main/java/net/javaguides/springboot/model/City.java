@@ -29,6 +29,9 @@ public class City {
         this.country_id = country_id;
     }
 
+    public long getCity_id() {
+        return city_id;
+    }
     public String getCityName() {
         return city_name;
     }

@@ -111,6 +111,11 @@ public class FlightController {
         }
     }
 
+    @GetMapping("/flights/search_by_company_id/{company_id}")
+    public List<Flight> searchFlightByCompanyId(@PathVariable Integer company_id){
+        return  flightRepository.findFlightByCompany_id(company_id);
+    }
+
     @GetMapping("/flights/search_by_city/{city}")
     public void searchFlightByCity(@PathVariable String city){
         try {
